@@ -1,0 +1,13 @@
+form(action="/", method="POST", style= "text-align:center;")
+	div.forms
+		label(for="say") Enter URL here: 
+		input(name="URL" value="" id="website_url")
+		br
+		br 
+		label(for="say") Enter Search Term here:
+		input(name="term" value="" id="Search_term")
+	br
+	textarea(name="Past Websites", rows="10", cols="30", readonly) Here you can see past websites you've crawled
+	br
+	br
+	button(type="submit") Look for videos
