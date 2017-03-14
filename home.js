@@ -16,7 +16,7 @@ app.use(express.static('public'));
 
 app.post('/', function(req, res){
 
-	amqp.connect('amqp://localhost', function(err, conn) {
+	amqp.connect('amqp://otter-node.herokuapp.com', function(err, conn) {
   	conn.createChannel(function(err, ch) {
     var q = 'hello';
     var msg = JSON.stringify(req.body.URL);
