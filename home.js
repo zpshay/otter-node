@@ -5,6 +5,9 @@ var upload = multer();
 var app = express();
 var amqp = require('amqplib/callback_api');
 var port = process.env.PORT;
+var rabbitmq = process.env.RABBITMQ_BIGWIG_URL;
+var mongodb = process.env.MONGODB_URI;
+
 
 app.set('view engine', 'pug');
 app.set('views', './views');
@@ -16,7 +19,7 @@ app.use(express.static('public'));
 
 app.post('/', function(req, res){
 
-	amqp.connect('amqp://otter-node.herokuapp.com', function(err, conn) {
+	amqp.connect(rabbitmq, function(err, conn) {
   	conn.createChannel(function(err, ch) {
     var q = 'hello';
     var msg = JSON.stringify(req.body.URL);
