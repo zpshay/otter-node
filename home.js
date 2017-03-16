@@ -4,6 +4,7 @@ var multer = require('multer');
 var upload = multer();
 var app = express();
 var amqp = require('amqplib/callback_api');
+var port = process.env.PORT;
 
 
 app.set('view engine', 'pug');
@@ -31,7 +32,7 @@ app.post('/', function(req, res){
     console.log(" [x] Sent %s", noQuote);
     console.log(" [x] Sent %s", noQuote2);
   });
-  setTimeout(function() { conn.close(); process.exit(0) }, 3001);
+  setTimeout(function() { conn.close(); process.exit(0) }, port);
 });
 
 	res.send("recieved your request");
@@ -42,4 +43,4 @@ app.get('/', function(req, res){
     res.render('form');
 });
 
-app.listen(3001)
+app.listen(port)
